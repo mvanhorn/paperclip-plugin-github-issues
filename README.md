@@ -38,10 +38,11 @@ npm run build
 
 After installation, configure the plugin in Paperclip Settings > GitHub Issues Sync:
 
-1. **GitHub Token** - set a secret reference pointing to your GitHub PAT
-2. **Default Repository** - optional `owner/repo` for agent tool searches
-3. **Sync Comments** - enable to mirror comments between systems
-4. **Sync Direction** - bidirectional, github-to-paperclip, or paperclip-to-github
+1. **Create a secret** - go to Paperclip Settings → Secrets, click "Add Secret", paste your GitHub PAT as the value, and copy the generated UUID
+2. **GitHub Token** - paste the secret UUID from step 1 into the "GitHub Token" field
+3. **Default Repository** - optional `owner/repo` for agent tool searches
+4. **Sync Comments** - enable to mirror comments between systems
+5. **Sync Direction** - bidirectional, github-to-paperclip, or paperclip-to-github
 
 ## GitHub Webhook Setup
 
@@ -77,6 +78,18 @@ Built with the Paperclip Plugin SDK (`@paperclipai/plugin-sdk`).
 ## Status
 
 This plugin was built ahead of the plugin runtime landing on master (PR #821). It implements the full SDK contract based on the plugin spec and example plugins. Testing against a live Paperclip instance will happen once the plugin runtime ships.
+
+## Migration
+
+### v0.1.1
+
+The `githubTokenRef` field now requires a **secret UUID** rather than a raw token string. If you configured this plugin before v0.1.1 by pasting a raw GitHub personal access token directly into the field, you must re-configure:
+
+1. Go to Paperclip Settings → Secrets and add your GitHub PAT as a new secret
+2. Copy the secret's UUID
+3. Go to Settings → GitHub Issues Sync and replace the old token value with the secret UUID
+
+Plugins that were already storing a secret UUID (the intended usage) are unaffected.
 
 ## License
 

@@ -43,9 +43,10 @@ const manifest: PaperclipPluginManifestV1 = {
     properties: {
       githubTokenRef: {
         type: "string",
+        format: "secret-ref",
         title: "GitHub Token (secret reference)",
         description:
-          "Secret ref for a GitHub personal access token with repo scope",
+          "Secret UUID for your GitHub personal access token. Create the secret in Settings → Secrets, then paste its UUID here.",
       },
       defaultRepo: {
         type: "string",

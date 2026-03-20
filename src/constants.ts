@@ -1,5 +1,5 @@
 export const PLUGIN_ID = "paperclip-plugin-github-issues";
-export const PLUGIN_VERSION = "0.1.0";
+export const PLUGIN_VERSION = "0.1.1";
 
 export const TOOL_NAMES = {
   search: "search",
